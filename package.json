@@ -1,30 +1,20 @@
 {
-  "name": "backend",
+  "name": "smart-ward-ews_1",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
-  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ROHANVIJ2006/IBM_SMART_EWS_BACKEND.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@aws-sdk/client-s3": "^3.500.0",
-    "@aws-sdk/client-sns": "^3.500.0",
-    "axios": "^1.13.4",
-    "bcryptjs": "^3.0.3",
-    "cors": "^2.8.6",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.1.5",
-    "nodemailer": "^7.0.12",
-    "twilio": "^5.12.0"
+  "bugs": {
+    "url": "https://github.com/ROHANVIJ2006/IBM_SMART_EWS_BACKEND/issues"
   },
-  "devDependencies": {
-    "nodemon": "^3.1.11"
-  }
+  "homepage": "https://github.com/ROHANVIJ2006/IBM_SMART_EWS_BACKEND#readme"
 }
