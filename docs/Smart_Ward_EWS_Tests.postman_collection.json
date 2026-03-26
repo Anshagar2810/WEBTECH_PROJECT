@@ -1,0 +1,187 @@
+{
+  "info": {
+    "_postman_id": "smart-ward-ews-tests",
+    "name": "Smart Ward EWS - Critical Vitals Testing",
+    "description": "Test AWS S3 and Twilio alerts with critical patient vitals",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Create Test Patient",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"PAT001\",\n  \"name\": \"John Doe\",\n  \"age\": 45,\n  \"phone\": \"+919810325677\",\n  \"deviceId\": \"ESP32_001\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/patients",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "patients"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Test Normal Vitals (No Alert)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"PAT001\",\n  \"deviceId\": \"ESP32_001\",\n  \"heartRate\": 72,\n  \"spo2\": 98,\n  \"temperature\": 98.6\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/vitals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "vitals"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Test Medium Risk Vitals (With Alert)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"PAT001\",\n  \"deviceId\": \"ESP32_001\",\n  \"heartRate\": 105,\n  \"spo2\": 93,\n  \"temperature\": 99.5\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/vitals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "vitals"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Test CRITICAL HIGH RISK Vitals (Full Alerts!)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"PAT001\",\n  \"deviceId\": \"ESP32_001\",\n  \"heartRate\": 125,\n  \"spo2\": 88,\n  \"temperature\": 102.5\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/vitals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "vitals"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Test Extreme Critical Vitals (All Thresholds)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"PAT001\",\n  \"deviceId\": \"ESP32_001\",\n  \"heartRate\": 140,\n  \"spo2\": 85,\n  \"temperature\": 104.0\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/vitals",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "vitals"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. Get Patient Vitals History",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer YOUR_JWT_TOKEN",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/vitals/PAT001",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "vitals",
+            "PAT001"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
